@@ -106,12 +106,10 @@ uart-transmitter-verilog/
 ├── rtl/
 │   ├── baud_generator.v
 │   └── uart_tx.v
+│   └── uart_tx_top.v
 │
 ├── tb/
 │   └── uart_tx_tb.v
-│
-├── top/
-│   └── uart_tx_top.v
 │
 ├── constraints/
 │   └── uart_tx_basys3.xdc
@@ -160,7 +158,7 @@ uart-transmitter-verilog/
 
 ---
 
-## Author's
+## Authors
 
 **Lakshmi Omkareswar Thummagunta**
 - UART Architecture Design
