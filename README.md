@@ -1,8 +1,12 @@
 # UART Transmitter using Verilog HDL
 
+![Verilog](https://img.shields.io/badge/Language-Verilog-blue)
+![Vivado](https://img.shields.io/badge/Tool-Xilinx%20Vivado-orange)
+![FPGA](https://img.shields.io/badge/Target-Basys3-green)
+
 ## Overview
 
-This project implements a UART (Universal Asynchronous Receiver Transmitter) Transmitter using Verilog HDL. The design converts 8-bit parallel data into a serial data stream using an FSM-based architecture and configurable baud-rate generation. The transmitter follows the standard UART protocol consisting of Start, Data, and Stop bits.
+This project implements a UART (Universal Asynchronous Receiver Transmitter) using Verilog HDL. The design converts 8-bit parallel data into a serial data stream through an FSM-based architecture and configurable baud-rate generation. The transmitter follows the standard UART protocol consisting of Start, Data, and Stop bits.
 
 The project was designed, simulated, and verified using Xilinx Vivado and is targeted for implementation on the Basys-3 FPGA development board.
 
@@ -10,13 +14,14 @@ The project was designed, simulated, and verified using Xilinx Vivado and is tar
 
 ## Features
 
-- FSM-based UART Transmitter Design
-- Configurable Baud Rate Generation
-- 8-bit Data Transmission
-- Start and Stop Bit Support
-- LSB-First Data Transmission
-- Vivado Simulation Verified
-- FPGA Ready (Basys-3 Compatible)
+* FSM-Based UART Transmitter
+* Configurable Baud Rate Generation
+* 8-Bit Data Transmission
+* Start and Stop Bit Support
+* LSB-First Serial Transmission
+* Vivado Simulation Verified
+* Basys-3 FPGA Compatible
+* GitHub Actions Continuous Integration
 
 ---
 
@@ -26,19 +31,21 @@ The project was designed, simulated, and verified using Xilinx Vivado and is tar
   <img src="docs/uart_architecture.png" width="700">
 </p>
 
-The system consists of:
+### System Components
 
-### Baud Generator
-- Generates baud_tick pulses from the system clock.
-- Controls UART transmission timing.
+#### Baud Generator
 
-### UART Transmitter FSM
+* Generates baud_tick pulses from the system clock.
+* Controls UART transmission timing.
+
+#### UART Transmitter FSM
+
 Implements four states:
 
-- IDLE
-- START
-- DATA
-- STOP
+* IDLE
+* START
+* DATA
+* STOP
 
 The FSM serializes parallel data and transmits it according to the UART protocol.
 
@@ -52,12 +59,12 @@ The FSM serializes parallel data and transmits it according to the UART protocol
 
 ### State Description
 
-| State | Function |
-|---------|---------|
-| IDLE | Waits for transmission request |
-| START | Sends UART Start Bit (0) |
-| DATA | Transmits 8-bit data serially |
-| STOP | Sends UART Stop Bit (1) |
+| State | Function                       |
+| ----- | ------------------------------ |
+| IDLE  | Waits for transmission request |
+| START | Sends UART Start Bit (0)       |
+| DATA  | Transmits 8-bit data serially  |
+| STOP  | Sends UART Stop Bit (1)        |
 
 ---
 
@@ -71,7 +78,7 @@ The FSM serializes parallel data and transmits it according to the UART protocol
 
 ### Verification
 
-The transmitted data was:
+Transmitted Data:
 
 ```text
 8'hA5
@@ -91,10 +98,10 @@ UART transmits data LSB first:
 
 Observed waveform confirms:
 
-- Correct baud timing
-- Proper state transitions
-- Successful serial data transmission
-- Correct stop-bit generation
+* Correct baud timing
+* Proper FSM state transitions
+* Successful serial data transmission
+* Correct stop-bit generation
 
 ---
 
@@ -107,7 +114,6 @@ uart-transmitter-verilog/
 │   ├── baud_generator.v
 │   └── uart_tx.v
 │   └── uart_tx_top.v
-│
 ├── tb/
 │   └── uart_tx_tb.v
 │
@@ -121,6 +127,10 @@ uart-transmitter-verilog/
 ├── screenshots/
 │   └── uart_tx_waveform.png
 │
+├── .github/
+│   └── workflows/
+│       └── verilog-ci.yml
+│
 └── README.md
 ```
 
@@ -128,50 +138,53 @@ uart-transmitter-verilog/
 
 ## Tools Used
 
-- Verilog HDL
-- Xilinx Vivado
-- Basys-3 FPGA Board
-- Git & GitHub
+* Verilog HDL
+* Xilinx Vivado
+* Basys-3 FPGA Board
+* Git & GitHub
+* GitHub Actions
 
 ---
 
 ## Applications
 
-- FPGA-Based Communication Systems
-- FPGA and RTL Design Learning
-- Embedded Systems
-- Serial Data Communication
-- Digital System Interfacing
-- UART-Based Debugging and Monitoring
-
----
-
-## Future Enhancements
-
-- UART Receiver Implementation
-- Full UART TX/RX Communication System
-- Parity Bit Support
-- Configurable Data Width
-- Configurable Stop Bits
-- FPGA Hardware Demonstration
-- Integration with Microcontrollers and Sensors
+* FPGA-Based Communication Systems
+* Embedded Systems
+* Serial Data Communication
+* Digital System Interfacing
+* UART-Based Debugging and Monitoring
+* FPGA and RTL Design Learning
 
 ---
 
 ## Authors
 
-**Lakshmi Omkareswar Thummagunta**
-- UART Architecture Design
-- Baud Generator Development
-- FSM-Based UART Transmitter Implementation
-- RTL Simulation and Verification
-- FPGA Integration and Testing
+### Lakshmi Omkareswar Thummagunta
 
-**Sriya Adimulam**
-- Project Documentation
-- FSM and Architecture Diagram Preparation
-- Waveform Analysis
-- Repository Organization
-- Technical Presentation Support
+* UART Architecture Design
+* Baud Generator Development
+* FSM-Based UART Transmitter Implementation
+* RTL Simulation and Verification
+* FPGA Integration and Testing
+
+### Sriya Adimulam
+
+* Project Documentation
+* FSM and Architecture Diagram Preparation
+* Waveform Analysis
+* Repository Organization
+* Technical Presentation Support
+
+---
+
+## Future Enhancements
+
+* UART Receiver Implementation
+* Full UART TX/RX Communication System
+* Parity Bit Support
+* Configurable Data Width
+* Configurable Stop Bits
+* FPGA Hardware Demonstration
+* Integration with Microcontrollers and Sensors
 
 ---

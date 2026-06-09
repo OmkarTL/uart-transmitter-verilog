@@ -1,0 +1,32 @@
+name: Verilog CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  syntax-check:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Icarus Verilog
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog
+
+      - name: Compile UART Project
+        run: |
+          iverilog -o uart_sim \
+          rtl/baud_generator.v \
+          rtl/uart_tx.v \
+          tb/uart_tx_tb.v
